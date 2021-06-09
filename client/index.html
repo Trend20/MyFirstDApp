@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <!-- WEB3 JS -->
+        <script src='node_modules/web3/dist/web3.min.js'></script>
+    </head>
+		<title>My First DApp</title>
+	</head>
+	<body>
+		Web 3 Demo
+		<br />
+		<button onclick="printCoolNumber();">Print Cool Number</button>
+		<button onclick="changeCoolNumber();">Change Cool Number</button>
+		<br /><br />
+		Status: <span id="status">Loading...</span>
+
+
+        <script type="text/javascript">
+            async function loadWeb3() {
+                if (window.ethereum) {
+                    window.web3 = new Web3(window.ethereum);
+                    window.ethereum.enable();
+                }
+            }
+            
+            async function load() {
+                await loadWeb3();
+                updateStatus('Ready!');
+            }
+            
+            function updateStatus(status) {
+                const statusEl = document.getElementById('status');
+                statusEl.innerHTML = status;
+                console.log(status);
+            }
+            
+            load();
+        </script>
+	</body>
+</html>
